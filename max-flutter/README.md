@@ -9,4 +9,5 @@ This is the first module in the course and inlcludes the basic learnings on how 
 #### Notes
 - [Flutter to Debian](https://pub.dev/packages/flutter_to_debian)
 - [build linux apps with flutter](https://docs.flutter.dev/platform-integration/linux/building)
+- [build and release on android](https://docs.flutter.dev/deployment/android)
 
