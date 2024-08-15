@@ -5,18 +5,17 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.IntFunction;
 
 public class GameState {
-    private final String ALIVE = " ■"; //""● ";
-    private final String DEAD = " □"; //""○ ";
+    private final String ALIVE = "⬜"; //""● ";
+    private final String DEAD = "⬛"; //""○ ";
 
     private int xCount;
     private int yCount;
-    private int startingLives;
+    private int startingLives = 0;
     private int[][] board;
 
     public GameState() {
-        this.xCount = 40;
-        this.yCount = 60;
-        this.startingLives = (this.xCount+this.yCount) * 20;
+        this.xCount = 30;
+        this.yCount = 40;
         this.board = new int[xCount][yCount];
     }
 
@@ -26,12 +25,14 @@ public class GameState {
         for (int i = 0; i < xCount; i++) {
             for (int j = 0; j < yCount; j++) {
                 board[i][j] = 0;
-                if (lives <= this.startingLives && random.nextInt(50) % 5 == 0){
+                if (random.nextInt(10) % 2 == 0){
                     board[i][j] = 1;
                     lives++;
                 }
             }
         }
+
+        this.startingLives = lives;
     }
 
     private void clearConsole() {
@@ -51,17 +52,21 @@ public class GameState {
     }
 
     private void printGameBoard() {
+      int currentAlive = 0;
         StringBuilder board = new StringBuilder();
         for (int i = 0; i < xCount; i++) {
             for (int j = 0; j < yCount; j++) {
                 if (this.board[i][j] == 1) {
                     board.append(ALIVE);
+                    currentAlive++;
                 } else {
                     board.append(DEAD);
                 }
             }
             board.append("\n");
         }
+        board.append(String.format("alive/starting %d/%d", currentAlive, startingLives));
+
         clearConsole();
         System.out.println(board);
     }
