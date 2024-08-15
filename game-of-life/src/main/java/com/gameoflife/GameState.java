@@ -14,12 +14,12 @@ public class GameState {
     private int[][] board;
 
     public GameState() {
-        this.xCount = 30;
-        this.yCount = 40;
+        this.xCount = 10;
+        this.yCount = 20;
         this.board = new int[xCount][yCount];
     }
 
-    private void initGameboard(){
+    private void initGameBoard(){
         Random random = new Random();
         int lives = 0;
         for (int i = 0; i < xCount; i++) {
@@ -65,7 +65,7 @@ public class GameState {
             }
             board.append("\n");
         }
-        board.append(String.format("alive/starting %d/%d", currentAlive, startingLives));
+        board.append(String.format("alive/starting: %d/%d", currentAlive, startingLives));
 
         clearConsole();
         System.out.println(board);
@@ -157,8 +157,8 @@ public class GameState {
     }
 
     public void Run() {
-        initGameboard();
-        int end = 200;
+        initGameBoard();
+        int end = (yCount * xCount) / 4;
         try {
             while (end > 0) {
                 printGameBoard();
@@ -169,7 +169,7 @@ public class GameState {
             };
 
             printGameBoard();
-            System.out.println("end: " + end);
+            System.out.println("turns left: " + end);
         } catch (Exception e) {
             e.printStackTrace();
         }
