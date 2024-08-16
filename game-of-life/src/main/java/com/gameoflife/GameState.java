@@ -142,7 +142,6 @@ public class GameState {
             count += board[x+1][y-1]; // ↗
         } else {
             count += board[x][y-1]; // ↑
-            count +=
             count += board[x][y+1]; // ↓
             count += board[x+1][y]; // →
             count += board[x-1][y]; // ←
