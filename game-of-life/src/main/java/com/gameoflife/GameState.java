@@ -162,7 +162,7 @@ public class GameState {
         try {
             while (end > 0) {
                 printGameBoard();
-                System.out.println("end: " + end);
+                System.out.println("turns left: " + end);
                 updateGameBoard();
                 end--;
                 TimeUnit.MILLISECONDS.sleep(300);
